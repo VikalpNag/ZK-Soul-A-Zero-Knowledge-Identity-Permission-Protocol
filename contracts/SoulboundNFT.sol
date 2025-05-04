@@ -6,4 +6,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract SoulboundNFT is ERC721, Ownable {
     uint256 public nextTokenId;
+
+    constructor(
+        string memory name,
+        string memory symbol
+    ) ERC721(name, symbol) Ownable(msg.sender) {}
 }
