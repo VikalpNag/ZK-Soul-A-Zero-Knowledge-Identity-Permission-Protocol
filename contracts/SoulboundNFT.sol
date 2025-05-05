@@ -54,4 +54,12 @@ contract SoulboundNFT is ERC721URIStorage, Ownable {
     ) public virtual override {
         revert("Soulbound:Transfer not allowed");
     }
+
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public virtual override {
+        revert("Soulbound: Transfer not allowed");
+    }
 }
