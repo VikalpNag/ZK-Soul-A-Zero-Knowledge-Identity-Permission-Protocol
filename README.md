@@ -54,3 +54,11 @@ npx hardhat compile
 ```bash
 npx hardhat test
 ```
+
+## Sample Usage
+
+```bash
+const nft = await ethers.deployContract("SoulboundNFT", ["ZK-SoulID", "ZKSID"]);
+await nft.mintSoulbound(user.address, "ipfs://QmYourMetadataHash");
+
+```
