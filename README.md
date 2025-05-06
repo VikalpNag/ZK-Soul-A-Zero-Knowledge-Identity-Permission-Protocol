@@ -42,3 +42,9 @@ ZK-Soul is a smart contract protocol built on top of **Soulbound NFTs** that rep
 ```bash
 npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox @openzeppelin/contracts
 ```
+
+## Compile contracts
+
+```bash
+npx hardhat compile
+```
