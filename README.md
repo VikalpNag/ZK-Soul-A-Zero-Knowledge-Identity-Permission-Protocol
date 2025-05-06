@@ -48,3 +48,9 @@ npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox @openzeppelin/co
 ```bash
 npx hardhat compile
 ```
+
+## Test contracts
+
+```bash
+npx hardhat test
+```
