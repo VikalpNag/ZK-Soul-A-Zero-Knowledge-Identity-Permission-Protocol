@@ -12,4 +12,33 @@ ZK-Soul is a smart contract protocol built on top of **Soulbound NFTs** that rep
 
 ---
 
-## 📁 Project Structure
+---
+
+## 🔧 Tech Stack
+
+- **Solidity (0.8.x)**
+- **Hardhat**
+- **Ethers.js**
+- **Chai + Mocha for Testing**
+- **IPFS (metadata hash / URI support)**
+- **OpenZeppelin Contracts**
+
+---
+
+## ⚙️ Features
+
+- ✅ ERC721-compatible Soulbound NFT
+- ✅ Metadata hash or IPFS URI for identity
+- ✅ Non-transferable (`transferFrom`, `approve`, etc. overridden)
+- ✅ Owner-only `mintSoulbound()` function
+- ✅ Fully tested with Hardhat
+
+---
+
+## 🚀 Getting Started
+
+### 1. Install Dependencies
+
+```bash
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox @openzeppelin/contracts
+```
