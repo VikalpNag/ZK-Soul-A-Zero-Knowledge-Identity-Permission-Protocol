@@ -23,27 +23,31 @@ contract SoulboundNFT is ERC721URIStorage, Ownable {
         _setTokenURI(tokenId, metadataHash); //Can be IPFS URI or identity hash
     }
 
-    ///@dev Override all transfer-related functions to prevent transfers
-    function _beforeTokenTransfer(
-        address from,
+    ///@dev Override transfer hook introduced in OZ v5
+    function _update(
         address to,
-        uint256 tokenId
-    ) internal override {
+        uint256 tokenId,
+        address auth
+    ) internal override returns (address) {
+        address from = _ownerOf(tokenId);
         require(
             from == address(0) || to == address(0),
-            "Soulbound:Tokens are non-transferable"
+            "Soulbound:tokens are non-transferable"
         );
-        super._beforeTokenTransfer(from, to, tokenId);
+        return super._update(to, tokenId, auth);
     }
 
-    function approve(address to, uint256 tokenId) public virtual override {
+    function approve(
+        address to,
+        uint256 tokenId
+    ) public pure override(ERC721, IERC721) {
         revert("Soulbound:Approval not allowed");
     }
 
     function setApprovalForAll(
         address operator,
         bool approved
-    ) public virtual override {
+    ) public pure override(ERC721, IERC721) {
         revert("Soulbound:Approval not allowed");
     }
 
@@ -51,16 +55,8 @@ contract SoulboundNFT is ERC721URIStorage, Ownable {
         address from,
         address to,
         uint256 tokenId
-    ) public virtual override {
+    ) public pure override(ERC721, IERC721) {
         revert("Soulbound:Transfer not allowed");
-    }
-
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) public virtual override {
-        revert("Soulbound: Transfer not allowed");
     }
 
     function safeTransferFrom(
@@ -68,7 +64,16 @@ contract SoulboundNFT is ERC721URIStorage, Ownable {
         address to,
         uint256 tokenId,
         bytes memory data
-    ) public virtual override {
+    ) public override(ERC721, IERC721) {
         revert("Soulbound: Transfer not allowed");
     }
+
+    // function safeTransferFrom(
+    //     address from,
+    //     address to,
+    //     uint256 tokenId,
+    //     bytes memory data
+    // ) public pure override(ERC721, IERC721) {
+    //     revert("Soulbound: Transfer not allowed");
+    // }
 }
