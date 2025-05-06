@@ -11,4 +11,12 @@
 //     soulboundNFT = await SoulboundNFT.deploy("ZK-SoulID", "ZKSID");
 //     await soulboundNFT.waitForDeployment();
 //   });
+
+//   it("Should mint a soulbound token to user", async () => {
+//     const uri = "ipfs://QmTestMetadataHash";
+//     await soulboundNFT.connect(owner).mintSoulbound(user1.address, uri);
+
+//     expect(await soulboundNFT.ownerOf(0)).to.equal(user1.address);
+//     expect(await soulboundNFT.tokenURI(0)).to.equal(uri);
+//   });
 // });
