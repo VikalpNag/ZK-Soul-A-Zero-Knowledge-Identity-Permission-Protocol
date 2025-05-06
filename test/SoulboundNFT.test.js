@@ -19,4 +19,14 @@
 //     expect(await soulboundNFT.ownerOf(0)).to.equal(user1.address);
 //     expect(await soulboundNFT.tokenURI(0)).to.equal(uri);
 //   });
+
+//   it("Should not allow transferFrom", async () => {
+//     await soulboundNFT
+//       .connect(owner)
+//       .mintSoulbound(user1.address, "ipfs://hash");
+
+//     await expect(
+//       soulboundNFT.connect(user1).transferFrom(user1.address, user2.address, 0)
+//     ).to.be.revertedWith("Soulbound:Transfer not allowed");
+//   });
 // });
