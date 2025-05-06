@@ -29,4 +29,13 @@
 //       soulboundNFT.connect(user1).transferFrom(user1.address, user2.address, 0)
 //     ).to.be.revertedWith("Soulbound:Transfer not allowed");
 //   });
+
+//   it("Should not allow approve", async () => {
+//     await soulboundNFT
+//       .connect(owner)
+//       .mintSoulbound(user1.address, "ipfs://hash");
+//     await expect(
+//       soulboundNFT.connect(user1).approve(user2.address, 0)
+//     ).to.be.revertedWith("Soulbound:Approval not allowed");
+//   });
 // });
