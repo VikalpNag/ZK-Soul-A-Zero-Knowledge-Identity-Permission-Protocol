@@ -56,4 +56,9 @@
 //     ).to.be.revertedWith("Soulbound: Transfer not allowed");
 //   });
 
+//   it("Only owner can mint", async () => {
+//     await expect(
+//       soulboundNFT.connect(user1).mintSoulbound(user2.address, "ipfs://hash")
+//     ).to.be.revertedWithCustomError(soulboundNFT, "OwnableUnauthorizedAccount");
+//   });
 // });
