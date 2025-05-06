@@ -44,4 +44,16 @@
 //       soulboundNFT.connect(user1).setApprovalForAll(user2.address, true)
 //     ).to.be.revertedWith("Soulbound:Approval not allowed");
 //   });
+
+//   it("Should not allow safeTransferFrom", async () => {
+//     await soulboundNFT
+//       .connect(owner)
+//       .mintSoulbound(user1.address, "ipfs://hash");
+//     await expect(
+//       soulboundNFT
+//         .connect(user1)
+//         .safeTransferFrom(user1.address, user2.address, 0)
+//     ).to.be.revertedWith("Soulbound: Transfer not allowed");
+//   });
+
 // });
