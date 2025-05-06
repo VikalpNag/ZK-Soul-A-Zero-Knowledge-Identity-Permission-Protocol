@@ -38,4 +38,10 @@
 //       soulboundNFT.connect(user1).approve(user2.address, 0)
 //     ).to.be.revertedWith("Soulbound:Approval not allowed");
 //   });
+
+//   it("Should not allow setApprovalForAll", async () => {
+//     await expect(
+//       soulboundNFT.connect(user1).setApprovalForAll(user2.address, true)
+//     ).to.be.revertedWith("Soulbound:Approval not allowed");
+//   });
 // });
