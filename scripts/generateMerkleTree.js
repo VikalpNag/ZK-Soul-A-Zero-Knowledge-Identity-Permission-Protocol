@@ -11,3 +11,11 @@ const proof = tree.getHexProof(leaves[0]); //for example : proof for age:23
 
 console.log("Merkle Root : ", root);
 console.log("Proof of first credential:", proof);
+
+module.exports = {
+  root,
+  tree,
+  leaves,
+  proof,
+  credentials,
+};
