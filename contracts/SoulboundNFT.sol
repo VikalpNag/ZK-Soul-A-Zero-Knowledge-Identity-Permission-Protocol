@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 contract SoulboundNFT is ERC721URIStorage, Ownable {
     uint256 public nextTokenId;
 
-    mapping(address => bytes32) identityRoots;
+    mapping(address => bytes32) public identityRoots;
 
     constructor(
         string memory name,
