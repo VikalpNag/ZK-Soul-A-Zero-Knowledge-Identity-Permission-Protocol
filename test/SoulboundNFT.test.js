@@ -3,8 +3,12 @@ const { ethers } = require("hardhat");
 const {
   root: merkleRoot,
   proof,
+  tree,
   credentials,
+  leaves,
+  root,
 } = require("../scripts/generateMerkleTree.js");
+const keccak256 = require("keccak256");
 
 describe("SoulboundNFT contract", function () {
   let owner, user1, user2, soulboundNFT;
@@ -88,5 +92,11 @@ describe("Merkle Tree Credential System", function () {
     await soulboundNFT.mintSoulbound(user1.address, "ipfs://hash", merkleRoot);
     const onChainRoot = await soulboundNFT.identityRoots(user1.address);
     expect(onChainRoot).to.be.equal(merkleRoot);
+  });
+
+  it("Should validate proof off-chain", async () => {
+    const leaf = keccak256("age:23");
+    const verified = tree.verify(proof, leaf, root);
+    expect(verified).to.be.true;
   });
 });
