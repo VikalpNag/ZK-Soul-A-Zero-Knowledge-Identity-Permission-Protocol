@@ -71,3 +71,22 @@ describe("SoulboundNFT contract", function () {
     ).to.be.revertedWithCustomError(soulboundNFT, "OwnableUnauthorizedAccount");
   });
 });
+
+//MERKLE TREE SYSTEM
+describe("Merkle Tree Credential System", function () {
+  let owner, user1, user2, soulboundNFT;
+
+  beforeEach(async () => {
+    [owner, user1, user2] = await ethers.getSigners();
+
+    const SoulboundNFT = await ethers.getContractFactory("SoulboundNFT");
+    soulboundNFT = await SoulboundNFT.deploy("ZK-SoulID", "ZKSID");
+    await soulboundNFT.waitForDeployment();
+  });
+
+  it("Should store correct root on mint", async () => {
+    await soulboundNFT.mintSoulbound(user1.address, "ipfs://hash", merkleRoot);
+    const onChainRoot = await soulboundNFT.identityRoots(user1.address);
+    expect(onChainRoot).to.be.equal(merkleRoot);
+  });
+});
