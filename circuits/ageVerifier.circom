@@ -16,4 +16,18 @@ template AgeVerifier(depth){
     isOver18.in[0]<==age;
     isOver18.in[1]<==18;
     isOver.out===1;
+
+    //Reconstruct the leaf hash(could be Poseidon hash of age)
+    signal computedLeaf;
+    computedLeaf<==leafHash;
+
+    component rootCalc=MerkleTreeInclusionProof(depth);
+    for(var i=0;i<depth;i++){
+        rootCalc.pathElements[i]<==pathElements[i];
+        rootCalc.pathIndices[i]<==pathIndices[i];
+    }
+    rootCalc.leaf<==computedLeaf;
+    rootCalc.root===merkleRoot;
 }
+
+component main=AgeVerifier(3);
