@@ -10,5 +10,10 @@ template AgeVerifier(depth){
     signal input pathIndices;
 
     signal private  input leafHash;
-    
+
+    //Constraints : age must be >= 18
+    component isOver18=GreaterEqThan(18);
+    isOver18.in[0]<==age;
+    isOver18.in[1]<==18;
+    isOver.out===1;
 }
